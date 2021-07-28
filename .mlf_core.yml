@@ -1,0 +1,19 @@
+domain: package
+language: prediction
+project_slug: liverctsegmentationpackage
+project_slug_no_hyphen: liverctsegmentationpackage
+template_version: 'None # <<MLF-CORE_NO_BUMP>>'
+template_handle: package-prediction
+github_username: luiskuhn
+creator_github_username: luiskuhn
+is_github_repo: true
+is_repo_private: true
+is_github_orga: false
+full_name: Luis Kuhn Cuellar
+email: luis.kuhn@gmail.com
+project_name: liverctsegmentationpackage
+project_short_description: "Prediction package for U-Net models traine\nd on the LiTS\
+  \ dataset."
+version: 0.1.0-SNAPSHOT
+license: MIT
+framework: pytorch
