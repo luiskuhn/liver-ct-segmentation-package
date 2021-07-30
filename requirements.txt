@@ -1,5 +1,5 @@
 rich==9.1.0
-click==7.1.2
+click==8.0.1
 numpy==1.19.2
 pytorch==1.7.1
 pytorch-lightning==1.1.8
