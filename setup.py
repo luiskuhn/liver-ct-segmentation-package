@@ -3,7 +3,7 @@
 """The setup script."""
 
 import os
-import liverctsegmentationpackage as module
+import liver_ct_segmentation_package as module
 from setuptools import setup, find_packages
 
 
@@ -50,24 +50,23 @@ setup(
         'Programming Language :: Python :: 3.8',
         'Programming Language :: Python :: 3.9',
     ],
-    description="Prediction package for U-Net models traine
-d on the LiTS dataset.",
+    description="Prediction package for U-Net models trained on the LiTS dataset.",
     entry_points={
         'console_scripts': [
-            'liverctsegmentationpackage=liverctsegmentationpackage.cli_pytorch:main',
+            'liver-ct-segmentation-package=liver_ct_segmentation_package.cli:main',
         ],
     },
     install_requires=requirements,
     license="MIT",
     long_description=readme + '\n\n' + history,
     include_package_data=True,
-    keywords='liverctsegmentationpackage',
-    name='liverctsegmentationpackage',
-    packages=find_packages(include=['liverctsegmentationpackage', 'liverctsegmentationpackage.*']),
+    keywords='liver-ct-segmentation-package',
+    name='liver-ct-segmentation-package',
+    packages=find_packages(include=['liver_ct_segmentation_package', 'liver_ct_segmentation_package.*']),
     package_data={
         module.__name__: walker(
             os.path.dirname(module.__file__),
-            'models', 'data'
+            'model', 'data'
         ),
     },
     setup_requires=setup_requirements,

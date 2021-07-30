@@ -1,22 +1,22 @@
 ==========================
-liverctsegmentationpackage
+liver-ct-segmentation-package
 ==========================
 
-.. image:: https://github.com/luiskuhn/liverctsegmentationpackage/workflows/Build%20liverctsegmentationpackage%20Package/badge.svg
-        :target: https://github.com/luiskuhn/liverctsegmentationpackage/workflows/Build%20liverctsegmentationpackage%20Package/badge.svg
-        :alt: Github Workflow Build liverctsegmentationpackage Status
+.. image:: https://github.com/luiskuhn/liver-ct-segmentation-package/workflows/Build%20liver-ct-segmentation-package%20Package/badge.svg
+        :target: https://github.com/luiskuhn/liver-ct-segmentation-package/workflows/Build%20liver-ct-segmentation-package%20Package/badge.svg
+        :alt: Github Workflow Build liver-ct-segmentation-package Status
 
-.. image:: https://github.com/luiskuhn/liverctsegmentationpackage/workflows/Run%20liverctsegmentationpackage%20Tox%20Test%20Suite/badge.svg
-        :target: https://github.com/luiskuhn/liverctsegmentationpackage/workflows/Run%20liverctsegmentationpackage%20Tox%20Test%20Suite/badge.svg
+.. image:: https://github.com/luiskuhn/liver-ct-segmentation-package/workflows/Run%20liver-ct-segmentation-package%20Tox%20Test%20Suite/badge.svg
+        :target: https://github.com/luiskuhn/liver-ct-segmentation-package/workflows/Run%20liver-ct-segmentation-package%20Tox%20Test%20Suite/badge.svg
         :alt: Github Workflow Tests Status
 
-.. image:: https://img.shields.io/pypi/v/liverctsegmentationpackage.svg
-        :target: https://pypi.python.org/pypi/liverctsegmentationpackage
+.. image:: https://img.shields.io/pypi/v/liver-ct-segmentation-package.svg
+        :target: https://pypi.python.org/pypi/liver-ct-segmentation-package
         :alt: PyPI Status
 
 
-.. image:: https://readthedocs.org/projects/liverctsegmentationpackage/badge/?version=latest
-        :target: https://liverctsegmentationpackage.readthedocs.io/en/latest/?badge=latest
+.. image:: https://readthedocs.org/projects/liver-ct-segmentation-package/badge/?version=latest
+        :target: https://liver-ct-segmentation-package.readthedocs.io/en/latest/?badge=latest
         :alt: Documentation Status
 
 .. image:: https://flat.badgen.net/dependabot/thepracticaldev/dev.to?icon=dependabot
@@ -24,8 +24,7 @@ liverctsegmentationpackage
         :alt: Dependabot Enabled
 
 
-Prediction package for U-Net models traine
-d on the LiTS dataset.
+Prediction package for U-Net models trained on the LiTS dataset.
 
 
 * Free software: MIT
@@ -36,6 +35,7 @@ Features
 --------
 
 * TODO
+* cli exec command: python cli.py -i data/img_117.pt -o data/pred.out
 
 Credits
 -------
