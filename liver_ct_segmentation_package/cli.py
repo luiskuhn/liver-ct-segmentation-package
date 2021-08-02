@@ -35,10 +35,10 @@ dist.init_process_group("gloo", rank=0, world_size=1)
 
 
 @click.command()
-@click.option('-i', '--input', required=True, type=str, help='Path to data file to predict.')
-@click.option('-m', '--model', type=str, help='Path to an already trained model.')
+@click.option('-i', '--input', required=True, type=str, help='Path to data file to predict')
+@click.option('-m', '--model', default='lits-unet', type=str, help='ID/Path to an already trained model')
 @click.option('-c/-nc', '--cuda/--no-cuda', type=bool, default=False, help='Whether to enable cuda or not')
-@click.option('-o', '--output', type=str, help='Path to write the output to')
+@click.option('-o', '--output', type=str, help='Output path')
 def main(input: str, model: str, cuda: bool, output: str):
     """Command-line interface for liver-ct-segmentation-package"""
 
@@ -47,9 +47,9 @@ def main(input: str, model: str, cuda: bool, output: str):
         """)
 
     print('[bold blue]Run [green]liver-ct-segmentation-package --help [blue]for an overview of all commands\n')
-    if not model:
+    if model == 'lits-unet':
         #model = get_pytorch_model(f'{WD}/models/snapshots/lits_unet_3d/model/')
-        model = get_pytorch_model(f'model/snapshots/lits_unet_3d/')
+        model = get_pytorch_model(f'model/snapshots/lits_unet_3d/model/')
     else:
         model = get_pytorch_model(model)
     #if cuda:
@@ -72,7 +72,8 @@ def read_input_volume(input_path: str):
 
     img = torch.load(input_path)
 
-    #save_vol('img.mrc', np.transpose(img, axes=[2, 1, 0])) ###save for debugging
+    # save for debugging
+    #save_vol('img.mrc', np.transpose(img, axes=[2, 1, 0]))
 
     return img
 
@@ -112,7 +113,7 @@ def write_results(predictions, path_to_write_to) -> None:
     :param path_to_write_to: Path to write the predictions to
     """
 
-    save_vol(path_to_write_to + ".mrc", np.transpose(predictions, axes=[2, 1, 0]))
+    save_vol(path_to_write_to + "labels.mrc", np.transpose(predictions, axes=[2, 1, 0]))
 
 def get_pytorch_model(path_to_pytorch_model: str):
     """

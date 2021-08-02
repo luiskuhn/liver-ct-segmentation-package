@@ -54,6 +54,7 @@ setup(
     entry_points={
         'console_scripts': [
             'liver-ct-segmentation-package=liver_ct_segmentation_package.cli:main',
+            'liver-ct-segmentation-package-model-dl=liver_ct_segmentation_package.cli_model_dl:main',
         ],
     },
     install_requires=requirements,
