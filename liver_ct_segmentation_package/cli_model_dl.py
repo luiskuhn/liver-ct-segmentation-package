@@ -10,21 +10,21 @@ import zipfile
 ###############################################
 
 #WD = os.path.dirname(__file__)
-#TMP_FILE_PATH = './model.zip'
 LITS_UNET_URL = 'https://zenodo.org/record/5153279/files/lits_unet_3d_model.zip'
 
 @click.command()
 @click.option('-m', '--model', default='lits-unet', type=str, help='ID of trained model.')
-@click.option('-o', '--output', default='model/snapshots/lits_unet_3d/', type=str, help='Where to save the model')
+@click.option('-o', '--output', default='snapshots/lits_unet_3d/', type=str, help='Where to save the model')
 @click.option('-t', '--tmp', default='./model.zip', type=str, help='Path to tmp zip file')
 def main(model: str, output: str, tmp: str):
     """Command-line interface to download models for the liver-ct-segmentation-package"""
 
     print(r"""[bold blue]
-        liver-ct-segmentation-package
+        liver-ct-segmentation-package: Package of 3D U-Nets reproducibly trained on the LiTS dataset.
+        -->Model download CLI
         """)
 
-    print('[bold blue]Run [green]liver-ct-segmentation-package --help [blue]for an overview of all commands\n')
+    print('[bold blue]Run [green]liver-ct-seg-model-dl --help [blue]for an overview of all commands\n')
     
     print('[bold blue] Downloading model file: ' + model)
     if model == 'lits-unet':

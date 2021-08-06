@@ -4,6 +4,6 @@ FROM python:3.8.1-alpine
 RUN apk update
 RUN apk add make automake gcc g++ git
 
-RUN pip install liverctsegmentationpackage
+RUN pip install liver-ct-segmentation-package
 
-CMD liverctsegmentationpackage
+CMD liver-ct-segmentation-package
