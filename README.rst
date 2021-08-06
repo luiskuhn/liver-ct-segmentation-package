@@ -1,6 +1,6 @@
-==========================
+=============================
 liver-ct-segmentation-package
-==========================
+=============================
 
 .. image:: https://github.com/luiskuhn/liver-ct-segmentation-package/workflows/Build%20liver-ct-segmentation-package%20Package/badge.svg
         :target: https://github.com/luiskuhn/liver-ct-segmentation-package/workflows/Build%20liver-ct-segmentation-package%20Package/badge.svg
