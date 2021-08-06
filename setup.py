@@ -53,8 +53,8 @@ setup(
     description="Prediction package for U-Net models trained on the LiTS dataset.",
     entry_points={
         'console_scripts': [
-            'liver-ct-segmentation-package=liver_ct_segmentation_package.cli:main',
-            'liver-ct-segmentation-package-model-dl=liver_ct_segmentation_package.cli_model_dl:main',
+            'liver-ct-seg-pred=liver_ct_segmentation_package.cli_pred:main',
+            'liver-ct-seg-model-dl=liver_ct_segmentation_package.cli_model_dl:main',
         ],
     },
     install_requires=requirements,
