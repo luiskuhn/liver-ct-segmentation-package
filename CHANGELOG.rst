@@ -11,6 +11,12 @@ This project adheres to `Semantic Versioning <https://semver.org/>`_.
 
 * First working prototype
 
+**Fixed**
+
+**Dependencies**
+
+**Deprecated**
+
 
 0.1.0-SNAPSHOT (2021-07-28)
 ---------------------------------------------
