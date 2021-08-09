@@ -34,8 +34,8 @@ Prediction package for U-Net models trained on the LiTS dataset.
 Features
 --------
 
-* TODO
-* cli exec command: python cli.py -i data/img_117.pt -o data/pred.out
+* Model download CLI: liver-ct-seg-model-dl
+* Prediction CLI: liver-ct-seg-pred
 
 Credits
 -------
