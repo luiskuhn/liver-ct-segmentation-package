@@ -73,6 +73,6 @@ setup(
     setup_requires=setup_requirements,
     tests_require=test_requirements,
     url='https://github.com/luiskuhn/liver-ct-segmentation-package',
-    version='1.1.0',
+    version='1.5.0',
     zip_safe=False,
 )
