@@ -34,12 +34,12 @@ dist.init_process_group("gloo", rank=0, world_size=1)
 #WD = os.path.dirname(__file__)
 
 @click.command()
-@click.option('-i', '--input', required=True, type=str, help='Path to data file to predict')
-@click.option('-m', '--model', default='model/snapshots/lits_unet_3d/model/', type=str, help='ID/Path to an already trained model')
+@click.option('-i', '--input', required=True, type=str, help='Path to input data file, on which to predict')
+@click.option('-m', '--model', default='snapshots/lits_unet_3d/model/', type=str, help='ID/Path to an already trained model')
 @click.option('-c/-nc', '--cuda/--no-cuda', type=bool, default=False, help='Whether to enable cuda or not')
-@click.option('-o', '--output', type=str, help='Output path')
-@click.option('-s', '--suffix', default='_pred_labels.mrc', type=str, help='Output filename suffix (atm with .mrc)')
-def main(input: str, model: str, cuda: bool, output: str, suffix: str):
+@click.option('-o', '--output', type=str, help='Path to output folder')
+@click.option('-p', '--pred', default='_pred_lab.mrc', type=str, help='Filename for prediction output (class label mask)')
+def main(input: str, model: str, cuda: bool, output: str, pred: str):
     """Command-line interface for liver-ct-segmentation-package"""
 
     print(r"""[bold blue]
@@ -48,6 +48,8 @@ def main(input: str, model: str, cuda: bool, output: str, suffix: str):
         """)
 
     print('[bold blue]Run [green]liver-ct-seg-pred --help [blue]for an overview of all commands\n')
+
+    pred_filename = pred
 
     print('[bold blue] Loading model: ' + model)
     #if model == 'lits-unet':
@@ -64,8 +66,8 @@ def main(input: str, model: str, cuda: bool, output: str, suffix: str):
     predictions = predict_img(net=model_obj, img=volume_image)
     print('prediction shape: ' + str(predictions.shape))
     if output:
-        print(f'[bold blue]Writing predictions to {output}' + suffix)
-        write_results(predictions, output, suffix)
+        print(f'[bold blue]Writing predictions to {output}' + pred_filename)
+        write_results(volume_image, predictions, output, pred_filename)
 
 
 def read_input_volume(input_path: str):
@@ -73,10 +75,15 @@ def read_input_volume(input_path: str):
     TODO
     """
 
-    img = torch.load(input_path)
+    if input_path[len(input_path)-4:] == ".mrc":
+        with mrc.open(input_path, permissive=True) as mrc_file:
+            img = np.array(mrc_file.data) # TODO: find a more efficient way to make writeable
+    else:
+        img = torch.load(input_path)
 
     # save for debugging
-    #save_vol('img.mrc', np.transpose(img, axes=[2, 1, 0]))
+    #save_vol('img_i.mrc', img)
+    #save_vol('img_t.mrc', np.transpose(img, axes=[2, 1, 0]))
 
     return img
 
@@ -108,16 +115,21 @@ def predict_img(net, img, use_gpu=False):
 
     return labels
 
-
-def write_results(predictions, path_to_write_to, suffix) -> None:
+def write_results(input_image, predictions, output_path, pred_filename, transpose=True) -> None:
     """
     Writes the predictions into a human readable file.
     :param predictions: Predictions as a numpy array
-    :param path_to_write_to: Path to write the predictions to
+    :param output_path: Path to write the predictions to
     """
 
+    if transpose:
+        pred_filename = '_tsp_' + pred_filename
+
+        predictions = np.transpose(predictions, axes=[2, 1, 0])
+        save_vol(output_path + '_tsp_input.mrc', np.transpose(input_image, axes=[2, 1, 0]))
+
     # mrc for easy visualization
-    save_vol(path_to_write_to + suffix, np.transpose(predictions, axes=[2, 1, 0]))
+    save_vol(output_path + pred_filename, predictions)
 
 def get_pytorch_model(path_to_pytorch_model: str):
     """
@@ -126,7 +138,6 @@ def get_pytorch_model(path_to_pytorch_model: str):
     """
     model = mlflow.pytorch.load_model(path_to_pytorch_model, map_location=torch.device('cpu')).module
     return model
-
 
 if __name__ == "__main__":
     traceback.install()
