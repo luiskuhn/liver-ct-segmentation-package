@@ -54,6 +54,7 @@ setup(
     entry_points={
         'console_scripts': [
             'liver-ct-seg-pred=liver_ct_segmentation_package.cli_pred:main',
+            'liver-ct-seg-uncert=liver_ct_segmentation_package.cli_uncert_pred:main',
             'liver-ct-seg-model-dl=liver_ct_segmentation_package.cli_model_dl:main',
         ],
     },
