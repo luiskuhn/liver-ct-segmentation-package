@@ -24,7 +24,7 @@ liver-ct-segmentation-package
         :alt: Dependabot Enabled
 
 
-Prediction package for reproducible U-Net models trained on the LiTS dataset. These models are trained using the mlf-core framework (mlf-core-lits_).
+Prediction package for reproducible U-Net models trained on the LiTS dataset. These models are trained using the mlf-core framework (https://github.com/mlf-core/liver-ct-segmentation/).
 
 * Free software: MIT
 * Documentation: https://liverctsegmentationpackage.readthedocs.io.
@@ -43,6 +43,5 @@ Credits
 
 This package was created with mlf-core_ using cookiecutter_.
 
-.. _mlf-core-lits: https://github.com/mlf-core/liver-ct-segmentation/
 .. _mlf-core: https://mlf-core.com
 .. _cookiecutter: https://github.com/audreyr/cookiecutter
